@@ -1,19 +1,18 @@
 class Game
 
-  attr_accessor :guess, :player1, :player2, :incorrect_guesses, :hangman
+  attr_accessor :guess, :player1, :player2, :incorrect_guesses, :hangman, :word
   attr_reader :word_length
 
-  HANGMANERRORS= Hash[1, ["O", [2, 3]],
-                      2, ["|", [3, 3]],
-                      3, ["/", [3, 2]],
-                      4, [92.chr, [3, 4]],
-                      5, ["|", [4, 3]],
-                      6, ["/", [5, 2]],
-                      7, [92.chr, [5, 4]]]
+  HANGMANERRORS = Hash[1, ["O", [2, 3]],
+                       2, ["|", [3, 3]],
+                       3, ["/", [3, 2]],
+                       4, [92.chr, [3, 4]],
+                       5, ["|", [4, 3]],
+                       6, ["/", [5, 2]],
+                       7, [92.chr, [5, 4]]]
 
-  # adjust init to take player1, player2
   def initialize(player1, player2, word)
-    # move all this to computer player
+    @word = word
     @word_length = word.length
     @response = Array.new(@word_length, '_')
     @hangman = ['____  '.split(''),
@@ -40,33 +39,13 @@ class Game
     hangman_rendering
     puts @response.join(" ")
   end
-  #
-  # def start
-  #   puts "Would you like to 'choose' the word or 'guess' the word?"
-  #   input = gets.chomp
-  #   if input == 'guess'
-  #     puts "What is your name?"
-  #     name = gets.chomp
-  #     @player = HumanPlayer.new(name)
-  #     play(@player)
-  #   else
-  #     puts "Please enter the word."
-  #     @word = gets.chomp.split('')
-  #     @words << @word
-  #     @word_length = @word.length
-  #     @player = ComputerPlayer.new(self)
-  #     @response = Array.new(@word_length, '_')
-  #     play(@player)
-  #   end
-  # end
 
   def play(player)
-    # set secret_word length
     # this should be refactored where there is no access to word at this point
     while @incorrect_guesses < 7 && @word != @response
       render
       guess = player.make_guess
-      checked_guess = player.check_guess(guess) # return value should be correct indicies
+      checked_guess = player.check_guess(guess, @word) # return value should be correct indicies
       if checked_guess.nil?
         @incorrect_guesses += 1
       else
@@ -76,26 +55,13 @@ class Game
       end
     end
     hangman_rendering
-    @word == @response ? "#{player.name} Wins!" : "#{player.name} Loses :("
+    if @word == @response
+      puts "#{player.name} Wins!"
+    else
+      puts "#{player.name} Loses :("
+    end
   end
-  #
-  # def check_guess(player, guess)
-  #   player.check_guess(guess, @word)
-  # end
-
 end
-
-
-# class Players
-#
-#   def make_guess
-#   end
-#
-#   def check_guess
-#   end
-#
-# end
-
 
 class HumanPlayer
   attr_accessor :name
@@ -144,10 +110,6 @@ class ComputerPlayer
     all_words
   end
 
-  # def select_words_by_letter(letter)
-  #   @words_with_letters.select! { |word| word.include? letter }
-  # end
-
   def delete_words_by_letter(letter)
     @words_with_letters.select! { |word| !word.include? letter }
   end
@@ -176,21 +138,29 @@ class ComputerPlayer
     guess
   end
 
-  def check_guess(guess)
+  def check_guess(guess, _word_from_game)
     puts "Computer guesses: #{guess}"
     puts "What are the positions of the letter? Put 'none' if there are no matches."
     p word.join(" ")
     p (0...word.length).to_a.join(" ")
     input = gets.strip
-    if input == 'none'
-      delete_words_by_letter(guess)
-      return nil
-    end
-    sanitizer = word.select { |x| x == guess }.count
+
+    sanitizer = word.select { |letter| letter == guess }.count
     positions = input.split(' ').map(&:to_i)
-    check_guess(guess, word) unless positions.all? { |pos| word[pos] == guess } && positions.count == sanitizer
-    select_words_by_position(guess, positions)
-    positions
+
+    if input == 'none'
+      if !word.include?(guess)
+        delete_words_by_letter(guess)
+        return nil
+      else
+        check_guess(guess)
+      end
+    elsif positions.all? { |pos| word[pos] == guess } && positions.count == sanitizer
+      select_words_by_position(guess, positions)
+      positions
+    else
+      check_guess(guess)
+    end
   end
 end
 
@@ -205,6 +175,7 @@ if __FILE__ == $PROGRAM_NAME
       name = gets.chomp
       player1 = HumanPlayer.new(name)
       player2 = ComputerPlayer.new
+      word = player2.word
     else
       puts "What is your name?"
       name = gets.chomp
@@ -214,6 +185,21 @@ if __FILE__ == $PROGRAM_NAME
       player2 = HumanPlayer.new(name)
     end
   elsif number_of_people == 2
+    puts "What is Player 1's name?"
+    name = gets.chomp
+    player1 = HumanPlayer.new(name)
+    puts "What is Player 2's name?"
+    name = gets.chomp
+    player2 = HumanPlayer.new(name)
+    puts "Player 1, please enter the word."
+    word = gets.chomp.split('')
+  elsif number_of_people == 0
+    puts "Get ready for awesomeness! Type OK when you are ready."
+    input = gets.chomp.split('')
+    input = gets.chomp.split('') until input == %w(O K)
+    player1 = ComputerPlayer.new
+    player2 = ComputerPlayer.new
+    word = player2.word
   else
     puts "Please enter 1 or 2"
   end

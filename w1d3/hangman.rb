@@ -117,6 +117,11 @@ class HumanPlayer
     position
   end
 
+
+
+
+
+
 end
 
 class ComputerPlayer
