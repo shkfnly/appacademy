@@ -126,3 +126,11 @@ p subsets([])
 p subsets([1])
 p subsets([1, 2])
 p subsets([1, 2, 3])
+
+w1d2
+w1d3
+w1d4
+w1d5
+
+Maze Solver
+Eight Queesn
