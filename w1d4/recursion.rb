@@ -113,3 +113,16 @@ def merge(arr1, arr2)
   end
   arr1.empty? ? result + arr2 : result + arr1
 end
+
+
+def subsets(arr)
+  return [] if arr.empty?
+  ass1, ass2 = [arr.first], subsets(arr)
+  answer = ass2, ass1
+end
+
+
+p subsets([])
+p subsets([1])
+p subsets([1, 2])
+p subsets([1, 2, 3])
