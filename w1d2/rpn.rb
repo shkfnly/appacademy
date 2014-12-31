@@ -1,3 +1,4 @@
+exit
 #!/usr/bin/env ruby
 
 class RPN
