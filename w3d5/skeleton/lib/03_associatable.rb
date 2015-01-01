@@ -16,7 +16,7 @@ class AssocOptions
   end
 
   def table_name
-    self.class_name.downcase + 's'
+    model_class.table_name
   end
 end
 
