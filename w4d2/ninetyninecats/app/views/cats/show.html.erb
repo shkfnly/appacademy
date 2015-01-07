@@ -1,0 +1,29 @@
+<h1><%= @cat.name =%></h1>
+
+<table class="table table-striped">
+  <% @cat.attributes.each do |key, value| %>
+  <tr>
+    <td> <%=key%> </td>
+    <td> <%=value%> </td>
+  </tr>
+  <% end %>
+</table>
+<br>
+<table class="table table-hover">
+  <tr>
+    <th> Start Date </th>
+    <th> End Date </th>
+    <th> Status </th>
+  <tr>
+  <% @cat.cat_rental_requests.each do |request| %>
+      <tr>
+        <td> <%= request.start_date %> </td>
+        <td> <%= request.end_date %> </td>
+        <td> <%= request.status %> </td>
+        <% if request.status == 'PENDING' %>
+          <td> <%= button_to  "Approve", approve_cat_rental_request_url, {class: 'btn btn-success'} %></td>
+          <td> <%= button_to  "Deny", deny_cat_rental_request_url, {class: 'btn btn-danger'} %> </td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>

@@ -1,0 +1,27 @@
+<header>
+  <h1> All Cats </h1>
+</header>
+<table class="table table-bordered">
+    <tr>
+      <th>Name</th>
+      <th>Birthday</th>
+      <th>Color</th>
+      <th>Sex</th>
+      <th>Description</th>
+      <th>Link</th>
+    </tr>
+  <% @cats.each do |cat| %>
+    <tr>
+      <td><%= cat.name %></td>
+      <td><%= cat.birth_date %></td>
+      <td><%= cat.color %></td>
+      <td><%= cat.sex %></td>
+      <td><%= cat.description %></td>
+      <td><%= link_to "#{cat.name}", cat_url(cat) %></td>
+    <tr>
+    </tr>
+  <%end%>
+</table>
+<br>
+
+<%= link_to "Create New Rental", new_cat_rental_request_url, {class: 'btn btn-primary'} %>
