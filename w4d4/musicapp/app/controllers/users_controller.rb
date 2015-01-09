@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
 
   def new
     @user ||= User.new
@@ -10,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in_user!(@user)
-      redirect_to user_url(@user)
+      redirect_to bands_url
     else
       flash.now[:notice] = "User not found"
       render :new
@@ -19,7 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: @user
+    render :show
   end
 
   private

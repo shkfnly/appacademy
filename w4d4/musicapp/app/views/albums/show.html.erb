@@ -1,2 +1,29 @@
-<h1>Albums#show</h1>
-<p>Find me in app/views/albums/show.html.erb</p>
+<h1><%= @album.title %></h1>
+<%= link_to 'Edit', edit_album_url(@album) %>
+<h3><%= @album.style %></h3>
+
+<% unless @album.tracks.nil? %>
+  <div> Tracks </div>
+  <table>
+  <tr>
+    <th>Title</th>
+    <th>Distribution</th>
+  </tr>
+  <% @album.tracks.each do |track| %>
+    <tr>
+      <td><%= link_to track.name, track_url(track) %></td>
+      <td><%= track.distrib %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<%= link_to "Add New Track", new_album_tracks_url(@album) %>
+
+<%= link_to "Back to Band", band_url(@album.band) %>
+
+
+
+
+
+

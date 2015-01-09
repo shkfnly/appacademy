@@ -1,0 +1,34 @@
+<% action_url = @album.persisted? ? album_url(@album) : albums_url %>
+<% form_method = @album.persisted? ? "PATCH" : "POST" %>
+<% submit_text = @album.persisted? ? "Update Album!" : "Create Album!" %>
+
+<% if @album.errors.full_messages %>
+    <% @album.errors.full_messages.each do |error| %>
+        <div><%= error %></div>
+    <% end %>
+<% end %>
+
+<form action="<%= action_url %>" method='post'>
+    <input type='hidden' name='_method' value='<%= form_method %>'>
+    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+    
+    <label for='album_title'>Album Title:</label>
+    <input type='text' name='album[title]' value='<%= @album.title %>' id='album_title'>
+    
+    <label for='album_band'>Band:</label>
+    <select name='album[band_id]' id='album_band'>
+      <option selected="selected" value=''></option>
+      <% @bands.each do |band| %>
+        <option value="<%= band.id %>" selected='<%= 'selected' if band.id == @album.band_id%>'><%= band.name %></option>
+      <% end %>
+    </select>
+    
+    <label>Album Type:</label>
+    <input type='radio' name='album[style]' id='album_style_live' value='Live' selected='<%= 'selected' if @album.style == 'Live'%>'>
+    <label for='album_style_live'>Live</label>
+    <input type='radio' name='album[style]' id='album_style_studio' value='Studio' selected='<%= 'selected' if @album.style == 'Studio'%>'>
+    <label for='album_style-studio'>Studio</label>
+
+    <input type='submit' value='<%= submit_text %>'>
+
+</form>

@@ -1,5 +1,10 @@
 class BandsController < ApplicationController
+  before_action :require_login
   
+  def index
+    @bands = Band.all
+    render :index
+  end
   def new
     @band ||= Band.new
     render :new
@@ -18,7 +23,7 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find(params[:id])
-    render json: @band
+    render :show
   end
 
   def edit
@@ -29,6 +34,13 @@ class BandsController < ApplicationController
   def update
     @band = Band.find(params[:id])
     @band.update!(band_params)
+    render :show
+  end
+
+  def destroy
+    @band = Band.find(params[:id])
+    @band.destroy
+    redirect_to bands_url
   end
 
   private

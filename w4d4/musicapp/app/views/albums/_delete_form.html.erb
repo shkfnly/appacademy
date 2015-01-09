@@ -1,8 +1,4 @@
-<h1><%= @track.name %></h1>
-
-<%= render 'form' %>
-
-<form action='<%= track_url(@track) %>' method='POST'>
+<form action='<%= album_url(@album) %>' method='POST'>
   <input type='hidden' name="_method" value="DELETE">
   <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
   <input id='delete' type='submit' value='Delete'>

@@ -1,0 +1,17 @@
+<h1>All Bands</h1>
+<% unless @bands.nil? %>
+  <table>
+    <tr>
+      <th>Name</th>
+    </tr>
+    <% @bands.each do |band| %>
+    <tr>
+      <td><%= link_to band.name, band_url(band) %></td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
+<%= link_to 'Add New Band', new_band_url %>
+
+
+  

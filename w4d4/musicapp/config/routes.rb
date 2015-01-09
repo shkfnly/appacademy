@@ -3,20 +3,22 @@ Rails.application.routes.draw do
 resources :users
 resource :session, only: [:new, :create, :destroy]
 resources :bands do
-  resource :albums, only: [:show]
+  resource :albums, only: [:new]
 end
-resources :albums do
-  resource :tracks, only: [:show]
+resources :albums, except: [:new] do
+  resource :tracks, only: [:new]
 end
 
-resources :tracks
+resources :tracks, except: [:new, :index]
+
+resources :notes, except: [:index]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'static_pages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,2 +1,14 @@
-<h1>Tracks#show</h1>
-<p>Find me in app/views/tracks/show.html.erb</p>
+<h1>Title: <%= @track.name %></h1>
+<h3>Distribution: <%= @track.distrib %></h3>
+
+<div>
+  <%= "<pre>#{ugly_lyrics(@track.lyrics)}</pre>".html_safe %>
+<div>
+
+<%= render partial: 'notes/note', collection: @track.notes %>
+
+<%= render 'notes/form'%>
+
+<%= link_to 'Edit', edit_track_url(@track) %>
+
+<%= link_to 'Back to Album', album_url(@track.album) %>
