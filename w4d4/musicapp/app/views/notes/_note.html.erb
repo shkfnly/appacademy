@@ -1,0 +1,17 @@
+<tr>
+  <td>
+    <%= note.text %>
+  </td>
+  <td>
+    <%= link_to note.user.email, user_url(note.user) %>
+  </td>
+  <% if current_user.id == note.user_id %>
+    <td>
+      <form action="<%= note_url(note) %>" method='POST'>
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name='authenticity_token' value='<%= form_authenticity_token %>'>
+        <input type="submit" value="Delete">
+      </form>
+    </td>
+  <% end %>
+</tr>

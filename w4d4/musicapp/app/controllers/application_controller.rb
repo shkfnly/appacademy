@@ -27,8 +27,13 @@ class ApplicationController < ActionController::Base
 
 
   def log_in_user!(user)
-    user.reset_session_token!
-    self.session[:session_token] = user.session_token
+    if user.activated
+      user.reset_session_token!
+      self.session[:session_token] = user.session_token
+    else
+      flash.now[:errors] = ["Please activate account before logging in"]
+      redirect_to new_session_url
+    end
   end
 
   def log_out

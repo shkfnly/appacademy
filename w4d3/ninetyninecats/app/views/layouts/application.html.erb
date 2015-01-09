@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ninetyninecats</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header id='site-bar'><h1 id='site-title'> 99Cats</h1></header>
+  <div><% if current_user.nil? %>
+              <%= link_to 'Login', new_session_url %>
+            <% else %>
+             <h3 class="col-sm-4 col-sm-offset-2"><%= "Welcome #{current_user.user_name}"%></h3>
+             <form action="/session" method="POST">
+               <input type="hidden" name="_method" value="DELETE">
+               <input
+                  type="hidden"
+                  name="authenticity_token"
+                  value="<%= form_authenticity_token %>">
+               <input id='logout' type="submit" value="Logout!">
+             </form>
+          <% end %>
+  </div>
+<%= yield %>
+
+</body>
+</html>

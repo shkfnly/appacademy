@@ -21,6 +21,14 @@ class UsersController < ApplicationController
     render :show
   end
 
+  def activate
+    @user = @user.find_by(activation_token: params[:activation_token])
+    @user.activated = true unless @user.nil?
+    @user.save!
+    log_in_user!(@user)
+    render :show
+  end
+
   private
 
   def user_params

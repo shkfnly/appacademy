@@ -1,0 +1,37 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+th {
+  text-align:center;
+}
+/* typography */
+h1 {
+  text-align:center;
+  margin-top: 0;
+
+}
+
+td{
+  text-align:center;
+}
+
+#site-bar {
+  background: #A60035;
+  margin-top: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#site-title {
+  text-align:left;
+  color: white;
+  margin-left: 10px;
+}
+
+#logout {
+  margin-top: 20px;
+}
+
+#homepage-background {
+
+}

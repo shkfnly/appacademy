@@ -1,0 +1,17 @@
+<h1>Welcome <%= @user.email %> </h1>
+
+<% unless @user.notes.nil? %>
+  <h3>Notes</h3>
+  <table>
+    <th>Text</th>
+    <th>Track</th>
+    <% @user.notes.each do |note| %>
+      <tr>
+        <td><%= note.text %></td>
+        <td><%= link_to note.track.name, track_url(note.track) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= link_to 'All Bands', bands_url %>
