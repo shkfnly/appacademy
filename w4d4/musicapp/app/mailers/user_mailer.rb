@@ -7,8 +7,9 @@ class UserMailer < ApplicationMailer
     mail(to: user.email, subject: 'Welcome to Music App')
   end
   
-  def authentication_email(user)
+  def auth_email(user)
     @user = user
     @url = '/users/activate/?activation_token=<%= user.activation_token %>'
+    mail(to: user.email, subject: 'Please confirm your email.')
   end
 end

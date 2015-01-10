@@ -1,8 +1,10 @@
 <div>
+  <% unless @session.nil? %>
   <% if @session.errors.full_messages %>
     <% @session.errors.full_messages.each do |error| %>
         <div><%= error %></div>
     <% end %>
-<% end %>
+  <% end %>
+  <% end %>
   <%= render 'users/form' %>
 </div>

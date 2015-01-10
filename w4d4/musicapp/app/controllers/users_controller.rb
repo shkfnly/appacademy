@@ -8,8 +8,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in_user!(@user)
-      redirect_to bands_url
+      msg = UserMailer.auth_email(@user)
+      msg.deliver_now
+      redirect_to root_url
+      flash[:notice] = Please check your email to activate the account
     else
       flash.now[:notice] = "User not found"
       render :new
