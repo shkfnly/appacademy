@@ -9,6 +9,8 @@
       <tr>
         <td><%= note.text %></td>
         <td><%= link_to note.track.name, track_url(note.track) %></td>
+        <td><%= link_to 'Edit', edit_note_url(note) %> </td>
+        <td><%= link_to 'Delete', note_url(note), method: :destroy %></td>
       </tr>
     <% end %>
   </table>

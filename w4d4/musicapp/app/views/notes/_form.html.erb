@@ -1,9 +1,12 @@
+<% action_url = @note.persisted? ? note_url(@note) : notes_url %>
+<% form_method = @note.persisted? ? "PATCH" : "POST" %>
+<% submit_text = @note.persisted? ? "Update Note" : "Add Note" %>
 
-
-<form action="<%= notes_url%>" method='POST'>
+<form action="<%= action_url%>" method='POST'>
   <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-  <input type='hidden' name='note[track_id]' value='<%=@track.id%>'>
+  <input type='hidden' name='_method' value='<%=form_method %>'
+  <input type='hidden' name='note[track_id]' value='<%= @note.track_id || @track.id %>'>
   <label for='note_text'>Enter Note:</label>
-  <textarea name="note[text]" id='note_text'></textarea>
-  <input type='submit' value='Add Note'>
+  <textarea name="note[text]" id='note_text'><%= @note.text %></textarea>
+  <input type='submit' value='<%= submit_text %>'>
 </form>
