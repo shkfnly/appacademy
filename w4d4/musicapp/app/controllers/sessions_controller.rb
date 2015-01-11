@@ -8,16 +8,17 @@ end
 def create 
   @user = User.find_by_credentials(
     params[:user][:email],
-    params[:user][:password]) || User.new(params[:user][:email],
     params[:user][:password])
-  if @user.persisted? && @user.activated
-    log_in_user!(@user)
-    redirect_to user_url(@user)
-  elsif @user.persisted? & !@user.activated
-    flash.now[:errors] = 'Please activate account'
-    redirect_to root_url
+  unless @user.nil?
+    if @user.activated
+      log_in_user!(@user)
+      redirect_to user_url(@user)
+    else
+      flash[:warning] = 'Please activate account'
+      redirect_to root_url
+    end
   else
-    flash.now[:errors] = 'Invalid Email or Password!'
+    flash.now[:danger] = 'Invalid Email or Password!'
     render :new
   end
 end

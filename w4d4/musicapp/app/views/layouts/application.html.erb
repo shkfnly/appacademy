@@ -17,7 +17,7 @@
       
     <% else %>
       
-      <%= link_to 'Home', user_url(current_user) %>
+      <%= link_to 'Home', user_url(id: current_user.id) %>
 
       <form action='<%= session_url %>' method="POST">
         <input type='hidden' name="_method" value="DELETE">
@@ -27,8 +27,11 @@
       
     <% end %>
   </header>
-
-<%= yield %>
+  <div class="container">
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+  <%= yield %>
 
 
 </body>

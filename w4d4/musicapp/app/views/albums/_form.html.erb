@@ -2,12 +2,6 @@
 <% form_method = @album.persisted? ? "PATCH" : "POST" %>
 <% submit_text = @album.persisted? ? "Update Album!" : "Create Album!" %>
 
-<% if @album.errors.full_messages %>
-    <% @album.errors.full_messages.each do |error| %>
-        <div><%= error %></div>
-    <% end %>
-<% end %>
-
 <form action="<%= action_url %>" method='post'>
     <input type='hidden' name='_method' value='<%= form_method %>'>
     <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>

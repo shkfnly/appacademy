@@ -2,11 +2,11 @@
 <% form_method = @track.persisted? ? "PATCH" : "POST" %>
 <% submit_text = @track.persisted? ? "Update Track" : "Create Track" %>
 
-<% if @track.errors.full_messages %>
-    <% @track.errors.full_messages.each do |error| %>
-        <div><%= error %></div>
-    <% end %>
-<% end %>
+<!-- <%# if @track.errors.full_messages %>
+    <%# @track.errors.full_messages.each do |error| %>
+        <div><%#= error %></div>
+    <%# end %>
+<%# end %> -->
 
 <form action="<%= action_url %>" method='POST'>
   <input type='hidden' name='_method' value='<%= form_method %>'>

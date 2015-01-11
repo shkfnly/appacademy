@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
   
   def auth_email(user)
     @user = user
-    @url = '/users/activate/?activation_token=' + user.activation_token.to_s
-    mail(to: user.email, subject: 'Please confirm your email.')
+    @url =  activate_user_url(@user.activation_token, email: @user.email)
+    mail(to: user.email, subject: 'Account Activation.')
   end
 end

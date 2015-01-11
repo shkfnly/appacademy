@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def require_login
 
     unless logged_in?
-      flash[:error] = "You must be logged in to access this section"
+      flash[:danger] = "You must be logged in to access this section"
       redirect_to new_session_url # halts request cycle
     end
   end
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
       user.reset_session_token!
       self.session[:session_token] = user.session_token
     else
-      flash.now[:errors] = ["Please activate account before logging in"]
+      flash.now[:danger] = ["Please activate account before logging in"]
       redirect_to new_session_url
     end
   end

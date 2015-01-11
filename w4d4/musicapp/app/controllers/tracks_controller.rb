@@ -10,11 +10,11 @@ class TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
     if @track.save
-      flash[:notice] = 'Success!'
+      flash[:success] = 'Success!'
       redirect_to album_url(Album.find(@track.album_id))
     else
       @albums = Album.all
-      flash.now[:errors] = @track.errors.full_messages
+      flash.now[:danger] = @track.errors.full_messages
       render :new
     end
 

@@ -15,12 +15,12 @@ class AlbumsController < ApplicationController
     @album = Album.new(album_params)
 
     if @album.save
-      flash[:notice] = "Success!"
+      flash[:success] = "Success!"
       redirect_to band_url(Band.find(@album.band_id))
 
     else
       @bands = Band.all
-      flash.now[:errors] = @album.errors.full_messages
+      flash.now[:danger] = @album.errors.full_messages
       render :new
     end
   end

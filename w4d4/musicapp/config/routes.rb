@@ -5,6 +5,8 @@ resources :users do
     get 'activate'
   end
 end
+
+
 resource :session, only: [:new, :create, :destroy]
 resources :bands do
   resource :albums, only: [:new]

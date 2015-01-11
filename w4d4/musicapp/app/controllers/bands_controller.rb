@@ -6,17 +6,17 @@ class BandsController < ApplicationController
     render :index
   end
   def new
-    @band ||= Band.new
+    @band = Band.new
     render :new
   end
 
   def create
     @band = Band.new(band_params)
     if @band.save
-      flash[:notice] = "Success!"
+      flash[:success] = "Success!"
       redirect_to band_url(@band)
     else
-      flash.now[:errors] = @band.errors.full_messages
+      flash.now[:warning] = @band.errors.full_messages
       render :new
     end
   end

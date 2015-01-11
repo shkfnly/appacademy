@@ -7,13 +7,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
       msg = UserMailer.auth_email(@user)
       msg.deliver_now
       redirect_to root_url
-      flash[:notice] = "Please check your email to activate the account"
+      flash[:info] = "Please check your email to activate the account"
     else
-      flash.now[:notice] = "User not found"
+      flash.now[:danger] = "Invalid User Parameters"
       render :new
     end
   end
@@ -24,12 +25,12 @@ class UsersController < ApplicationController
   end
 
   def activate
-    @user = @user.find_by(activation_token: params[:activation_token])
+    # if @user && @user.authenticated?(:activation, params[:id])
+    @user = User.find_by(activation_token: params[:id])
     @user.activated = true unless @user.nil?
-    @user.save!
+    @user.save
     log_in_user!(@user)
-    fail
-    render text: 'what'
+    redirect_to albums_url
   end
 
   private

@@ -10,10 +10,10 @@ class NotesController < ApplicationController
     params[:note][:user_id] = current_user.id
     @note = Note.new(note_params)
     if @note.save
-      flash[:notice] = 'Success!'
+      flash[:success] = 'Success!'
       redirect_to track_url(@note.track_id)
     else
-      flash.now[:errors] = @note.errors.full_messages
+      flash.now[:danger] = @note.errors.full_messages
       redirect_to track_url(@note.track_id)
     end
   end
