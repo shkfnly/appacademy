@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
+attr_reader :password
+
 validates :email, :session_token, :presence => true
 validates :email, :session_token, :uniqueness => true
-validates :password_digest, presence: { message: "Password can't be blank"}
+validates :password, presence: { message: "Password can't be blank"}
 
 has_many :notes
 
-after_initialize :ensure_session_token
+after_initialize :ensure_session_token, :ensure_activation_token
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -25,6 +27,7 @@ after_initialize :ensure_session_token
     SecureRandom::urlsafe_base64(16)
   end
 
+
   def reset_session_token!
     self.session_token = generate_session_token
     self.save!
@@ -32,7 +35,9 @@ after_initialize :ensure_session_token
 
   private
 
-  
+    def ensure_activation_token
+      self.activation_token ||= generate_session_token
+    end
 
     def ensure_session_token
       self.session_token ||= generate_session_token

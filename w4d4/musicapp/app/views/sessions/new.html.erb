@@ -1,3 +1,5 @@
+<h3>Please Log In.</h3>
+
 <div>
   <% unless @session.nil? %>
   <% if @session.errors.full_messages %>
@@ -6,5 +8,5 @@
     <% end %>
   <% end %>
   <% end %>
-  <%= render 'users/form' %>
+  <%= render 'form' %>
 </div>

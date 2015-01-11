@@ -11,16 +11,9 @@
     <h1 style='width: 400px; margin: 0;' id='site-title'>Music Manager</h1>
     <% if current_user.nil? %>
       
-      <form action='<%= session_url %>' method="POST">
-        <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
-        <label for='email'>Email:</label>
-        <input type='text' name='user[email]' value='Email' id='email'>
-        <label for='password'>Password:</label>
-        <input type='password' name='user[password]' id='password'>
-        <input type='submit' value='Log In'>
-      </form>
+      <%= render 'sessions/form' %>
 
-      <%= button_to 'Sign Up!', new_user_url, method: :get %>
+      <%= button_to 'Sign Up', new_user_url, method: :get %>
       
     <% else %>
       

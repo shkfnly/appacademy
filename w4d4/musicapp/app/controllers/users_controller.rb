@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       msg = UserMailer.auth_email(@user)
       msg.deliver_now
       redirect_to root_url
-      flash[:notice] = Please check your email to activate the account
+      flash[:notice] = "Please check your email to activate the account"
     else
       flash.now[:notice] = "User not found"
       render :new
@@ -28,7 +28,8 @@ class UsersController < ApplicationController
     @user.activated = true unless @user.nil?
     @user.save!
     log_in_user!(@user)
-    render :show
+    fail
+    render text: 'what'
   end
 
   private

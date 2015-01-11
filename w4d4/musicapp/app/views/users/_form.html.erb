@@ -2,7 +2,7 @@
   <div><%= flash.now[:errors] %></div>
 <% end %>
 
-<h1> Create a New User!</h1>
+
 <form action="<%= users_url%>" method="POST">
   <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token%>">
   <label for="email">Email:</label>
