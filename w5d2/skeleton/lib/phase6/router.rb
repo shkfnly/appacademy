@@ -20,7 +20,7 @@ module Phase6
       route_params = {}
       match_data = pattern.match(req.path)
       match_data.names.each do |name|
-        route_params[name] = match_data[name.to_sym]
+        route_params[name] = match_data[name]
       end
       @controller_class.new(req, res, route_params).invoke_action(@action_name)
       
