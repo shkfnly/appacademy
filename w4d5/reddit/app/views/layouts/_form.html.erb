@@ -1,0 +1,14 @@
+<% action_url = signup ? users_url : session_url %>
+<% submit_text = signup ? "Sign up" : "Log in" %>
+
+<form action="<%=action_url%>" method='POST'>
+  <input type="hidden" name='authenticity_token' value="<%= form_authenticity_token %>">
+
+  <label for='username'> Username:</label>
+  <input type="text" name='user[username]' value='<%= @user.username %>' id='username'>
+
+  <label for='password'>Password</label>
+  <input type='password' name='user[password]' id='password'>
+
+  <input type='submit' value='<%= submit_text %>'>
+</form>

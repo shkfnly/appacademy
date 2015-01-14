@@ -1,0 +1,15 @@
+<h1> <%= link_to @post.title, @post.url.nil? ? post_url(@post) : @post.url %></h1>
+
+ <h4><%= link_to @post.author.username, user_url(@post.author) %></h4>
+
+ <p><%= @post.content %></p>
+
+ <% if current_user.id == @post.author.id %>
+  <%= link_to 'Edit Post', edit_sub_post_url %>
+ <% end %>
+
+ <%= link_to "Add a Comment", new_sub_post_comment_url(post_id: @post) %>
+
+<% @post.subs.each do |sub| %>
+ <%= link_to "Back to #{sub.title}", sub_url(sub) %>
+<% end %>

@@ -1,0 +1,20 @@
+<h1><%= @sub.title %></h1>
+
+<h4><%= @sub.description %></h4>
+
+<h4><%= link_to @sub.moderator.username, user_url(@sub.moderator) %></h4>
+
+<% @posts.each do |post| %>
+  <% url = post.url.empty? ? sub_post_url(sub_id: @sub.id, id: post.id) : post.url %>
+  <%= link_to post.title, url %>
+  <%= link_to post.author.username, user_url(post.author) %>
+  <%= link_to "Comments", sub_post_url(sub_id: @sub.id, id: post.id) %>
+<% end %>
+
+<% if current_user.id == @sub.moderator.id %>
+  <%= link_to 'Edit Sub', edit_sub_url %>
+  <%= link_to 'Delete Sub', sub_url, method: :delete %>
+<% end %>
+
+<%= link_to 'Create a Post', new_sub_post_url(@sub.id) %>
+<%= link_to 'All Subs', subs_url %>

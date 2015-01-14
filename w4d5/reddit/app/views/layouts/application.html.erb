@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reddit</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<%= yield %>
+<footer>
+  <% unless current_user.nil? %>
+
+    <form action=<%= session_url %> method='POST'>
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type='hidden' name='authenticity_token' value = <%= form_authenticity_token %>>
+      <input type='submit' value= 'Log Out'>
+    </form>
+  <% else %>
+    <%= button_to "Log In", new_session_url, method: :get %>
+    <%= button_to "Sign Up", new_user_url, method: :get %>
+  <% end %>
+</footer>
+</body>
+</html>
