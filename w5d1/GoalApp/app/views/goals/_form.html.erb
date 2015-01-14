@@ -1,0 +1,29 @@
+<% action_url, form_method = @goal.persisted? ? [goal_url(@goal), :patch] : [goals_url, :post] %>
+<% submit_text = @goal.persisted? ? 'Update Goal' : 'Submit Goal' %>
+
+<%= render 'layouts/errors' %>
+
+<form action='<%= action_url %>' method="POST">
+  <%= include_form_auth_token %>
+  <input type='hidden' name="_method" value='<%= form_method %>'>
+
+<div>
+  <label>Title
+    <input type='text' name='goal[title]' value='<%= @goal.title %>'>
+  </label>
+</div>
+
+<div>
+  <label> Body
+    <textarea name='goal[body]'><%= @goal.body %></textarea>
+  </label>
+</div>
+
+<div>
+  <label>Private?
+    <input type="checkbox" name="goal[privacy]" value="true" <%= "selected" if @goal.privacy %>>
+  </label>
+</div>
+
+  <input type="submit" value="<%= submit_text %>">
+</form>

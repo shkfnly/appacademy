@@ -1,0 +1,12 @@
+<%= render 'layouts/errors' %>
+
+<h1><%= @goal.title %> Description</h1>
+
+<h4><%= @goal.body %></h4>
+
+<%= render "comments/comment", commentable_obj: @goal %>
+<%= render "comments/form", commentable_obj: @goal %>
+
+<%= button_to 'Delete Goal', goal_url(@goal), method: :delete %>
+<%= button_to 'Edit Goal', edit_goal_url(@goal), method: :get %>
+<%= button_to "Back to #{@goal.user.username}", user_url(@goal.user), method: :get %>

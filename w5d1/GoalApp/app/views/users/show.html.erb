@@ -1,0 +1,20 @@
+<%= render 'layouts/errors' %>
+<h1><%= @user.username %> Homepage</h1>
+
+<ul>
+  <% @user.goals.each do |goal| %>
+    <li>
+      <%= link_to goal.title, user_goal_url(id: goal.id, user_id: params[:id]) %>
+      <%= button_to 'Delete Goal', goal_url(goal), method: :delete %>
+      <%= button_to 'Edit Goal', edit_goal_url(goal), method: :get %>
+    </li>
+
+  <% end %>
+</ul>
+
+<div>
+  <%= link_to "Add Goal", new_goal_url %>
+</div>
+
+<%= render "comments/comment", commentable_obj: @user %>
+<%= render "comments/form", commentable_obj: @user %>

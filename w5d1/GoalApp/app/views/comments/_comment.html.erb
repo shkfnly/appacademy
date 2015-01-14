@@ -1,0 +1,8 @@
+<strong>Comments</strong>
+
+<% commentable_obj.comments.each do |comment| %>
+    <div>
+      <%= comment.body %>
+      <%= link_to comment.author.username, user_url(comment.author) %>
+    </div>
+<% end %>
