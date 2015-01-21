@@ -1,0 +1,264 @@
+<script>
+
+Array.prototype.myuniq = function(){
+  uniqarr = [];
+  var uniqueness = function(item){
+    if(uniqarr.indexOf(item) === -1){
+      uniqarr.push(item);
+    }
+  }
+  this.forEach(uniqueness);
+  return uniqarr;
+
+}
+
+var twoSum = function(arr){
+  var solution = [];
+  for(var i = 0; i < arr.length - 1; i++){
+    for(var j = i + 1; j < arr.length; j++){
+      if((arr[i] + arr[j]) === 0 ){
+        solution.push([i , j]);
+      }
+    }
+  }
+  return solution;
+}
+
+var transpose = function(arr){
+  var solution = []
+  var setup = 0
+  while(setup < arr.length){
+    solution.push([]);
+    setup++;
+  }
+  for(var i = 0; i < arr.length; i++){
+    for(var j = 0; j < arr.length; j++){
+      solution[j][i] = arr[i][j];
+    }
+  }
+  return solution;
+}
+
+var myEach = function(collection, iterator){
+  if(Array.isArray(collection)){
+    for(var i=0; i < collection.length; i++){
+      iterator(collection[i], i, collection);
+    }
+  }
+  else{
+    for(var key in collection){
+      iterator(collection[key], key, collection);
+    }
+  }
+}
+
+var myMap = function(collection, action){
+  var newarr = []
+  myEach(collection, function(item){
+    newarr.push(action(item));
+  })
+  return newarr;
+}
+
+
+var myInject = function(collection, iterator, accumulator){
+  if(typeof accumulator == 'undefined'){
+    accumulator = collection[0]
+    collection = collection.splice(1)
+  }
+  myEach(collection, function(item){
+    accumulator = iterator(accumulator, item)
+  })
+  return accumulator;
+}
+
+var bubbleSort = function(arr){
+  var sorted = false;
+  while(!sorted){
+    sorted = true
+    for(var i = 0; i < arr.length-1; i++){
+      if(arr[i] > arr[i+1]){
+        var temp = arr[i];
+        arr[i] = arr[i+1];
+        arr[i+1] = temp;
+        sorted = false
+      }
+    }
+  }
+  return arr;
+}
+
+String.prototype.mysubstring = function(){
+  var copy = this
+  var subs = ['']
+  for(var i = 0; i < copy.length; i++){
+    temp = subs.slice(0)
+    temp = myMap(temp, function(item){return item + copy[i]})
+    subs = subs.concat(temp);
+  }
+  return subs.slice(1);
+}
+
+var range = function(start, end){
+  if(start === end){
+    return [];
+  }
+  else{
+    return [start].concat(range(start+1, end));
+  }
+}
+
+var exponentiation = function(base, exp){
+  if(exp === 0){
+    return 1;
+  }
+  else{
+    return base * exponentiation(base, (exp - 1));
+  }
+}
+
+var shitty_exponentiation = function(base, exp){
+  if (exp === 0){
+    return 1;
+  }
+  else if(exp === 1){
+    return base;
+  }
+  else if(exp % 2 === 0){
+    return shitty_exponentiation(shitty_exponentiation(base, (exp/2)), 2);
+  }
+  else{
+    return base * shitty_exponentiation(base, ((exp - 1) / 2)) * shitty_exponentiation(base, ((exp - 1) / 2))
+  }
+}
+
+var fibonacci = function(n){
+  if(n < 3){
+    return [0, 1].slice(0, n);}
+  else{
+    temp = fibonacci(n - 1);
+    return concat(temp[temp.length-1] + temp[temp.length-2]);
+  }
+}
+
+var subsets = function(arr){
+  var subs = [[]];
+  for(var i = 0; i < arr.length; i++){
+    var clone = myMap(subs.slice(0), function(item){return item.concat(arr[i]);} );
+    subs = subs.concat(clone);
+    }
+  return subs;
+  }
+
+var bsearch = function(array, target){
+  midpoint = Math.floor((array.length / 2));
+  if (array.length === 1 && array[0] !== target ){
+    return null;
+  }
+  else if(array[midpoint] === target){
+    return midpoint;
+  }
+  else if(array[midpoint] > target){
+    return bsearch(array.slice(0, midpoint), target);
+  }
+  else if(array[midpoint] < target){
+    return bsearch(array.slice(midpoint + 1), target)
+  }
+}
+
+var mergeSort = function(array){
+  if (array.length < 2){
+    return array;
+  }
+  var midpoint = Math.floor((array.length / 2));
+  var left = array.slice(0, midpoint);
+  var right = array.slice(midpoint);
+  left = mergeSort(left);
+  right = mergeSort(right);
+  return merge(left,right);
+}
+
+var merge = function(left, right){
+  var result = [];
+  while(left.length > 0 && right.length > 0){
+    if(left[0] < right[0]){
+      result.push(left.shift());
+    }
+    else{
+      result.push(right.shift());
+    }
+  }
+  return result= result.concat(left).concat(right);
+}
+
+var makeChange = function(amt, coins){
+  if(coins.length === 0){
+    return [];
+  }
+  else{
+    var num_coins = Math.floor(amt / coins[0]);
+    var amt_remaining = amt - (num_coins * coins[0]);
+    var temp_change = [];
+    for(var i = 0; i < num_coins; i++){
+      temp_change.push(coins[0]);
+    }
+    return temp_change.concat(makeChange(amt_remaining, coins.slice(1)));
+  }
+}
+
+
+var Cat = function(name, owner){
+  this.name = name;
+  this.owner = owner;
+}
+
+
+var Student = function(first_name, last_name){
+  this.first_name = first_name;
+  this.last_name = last_name;
+  this.name = function(){
+    return first_name + " " + last_name;
+  }
+  this.courses = [];
+  this.enroll = function(course){
+    if(this.courses.indexOf(course) === -1){
+      this.courses.push(course);
+      console.log("successfully enrolled");
+      course.add_student(this);
+      return this.courses;
+    }
+    else{
+      console.log("already enrolled");
+      return this.courses;
+    }
+  }
+  this.course_load = function(){
+    var result = {};
+    myEach(this.courses, function(course){
+      if(typeof(result[course.dept]) === 'undefined'){
+        result[course.dept] = course.credits;
+      }
+      else{
+        result[course.dept] = result[course.dept] + course.credits;
+      }
+    })
+    return result;
+  }
+}
+
+var Course = function(course_name, dept, credits){
+  this.course_name = course_name;
+  this.dept = dept;
+  this.credits = credits;
+
+  this.students = [];
+  this.add_student = function(student){
+    this.students.push(student);
+  }
+
+}
+
+
+
+
+</script>
