@@ -18,6 +18,10 @@
           class='dropdown-toggle navbar-btn btn btn-primary'
           data-toggle='dropdown'><span class='glyphicon glyphicon-plus'></span>
         </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#/boards/new">New Board</a></li>
+        </ul>
       </li>
       <li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %></li>
     <% else %>
@@ -35,3 +39,15 @@
 <%= flash[:errors].join("<br>").html_safe %>
 </div>
 <% end %>
+
+<script>
+$('.dropdown-toggle').on('click', function(){
+  $('.dropdown-toggle').dropdown()
+})
+// $(function() {
+//     $( "#sortable" ).sortable(
+//       appendTo: $('.cards'),
+//       cursor: "move");
+//     $( "#sortable" ).disableSelection();
+//   });
+</script>

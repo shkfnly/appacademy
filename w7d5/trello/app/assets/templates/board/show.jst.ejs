@@ -1,0 +1,8 @@
+<h2><%= board.get('title') %></h2>
+<button class='btn btn-primary'><span class='glyphicon glyphicon-plus'></span></button><span>Add New List</span>
+  <ul class='lists'></ul>
+<h3>Members</h3>
+  <% _.each(board.get('members'), function(member){ %>
+    <p><%= member.email %></p>
+  <% }) %>
+

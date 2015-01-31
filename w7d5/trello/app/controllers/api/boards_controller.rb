@@ -10,6 +10,12 @@ module Api
       end
     end
 
+    def new
+      @board = current_user.boards.new
+      render json: @board
+    end
+
+
     def destroy
       @board = current_user.boards.find(params[:id])
       @board.try(:destroy)
