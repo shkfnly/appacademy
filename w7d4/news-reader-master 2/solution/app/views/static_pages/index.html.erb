@@ -1,0 +1,13 @@
+<h1 class="main-title">
+  <a href="#">New.read.er</a>
+
+  <%= button_to "Sign Out", session_url, :method => :delete, :class => "add-button" %>
+</h1>
+
+<div id='sidebar'></div>
+<div id='content'></div>
+
+<script>
+  // boot the app when the document is ready
+  $(NewReader.initialize);
+</script>

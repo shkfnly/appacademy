@@ -1,0 +1,10 @@
+<h1>
+  <a href="<%= entry.escape("link") %>"  target="_blank">
+    <%= entry.escape("title") %>
+  </a>
+</h1>
+
+<p><%= entry.get("published_at") %></p>
+
+<% var link = "#/feeds/" + entry.get("feed_id") %>
+<a href='<%= link %>'>Back to feed</a>

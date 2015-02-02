@@ -1,0 +1,134 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+button, h1, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-family: sans-serif;
+  background-image:url('./background3.png');
+}
+
+a {
+  text-decoration: none;
+  display: block;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: #57B2C7;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  color: #D58181;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#sidebar {
+  float:left;
+  padding-right: 50px;
+}
+
+#sidebar form {
+  padding-left: 40px;
+}
+
+#content {
+  overflow: auto;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.main-title a {
+  font-family:'News Cycle';
+  text-align: left;
+  font-size: 84px;
+  padding-left: 35px;
+  padding-bottom: 15px;
+  color: #000;
+  border-bottom: 1px solid #777777;
+  margin-bottom: 30px;
+}
+
+.main-title a:hover {
+  text-decoration: none;
+}
+
+.feed-title a {
+  color: #3B5B7D;
+  padding-bottom: 20px;
+}
+
+.add-button {
+  background-color: #C66653;
+  border-radius: 4px;
+  color: #FFF;
+  padding: 10px;
+}
+
+.add-button:hover {
+  background-color: #C35B4B;
+}
+
+.add-button:active {
+  background-color: #B84E3D;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.add-feed {
+  padding: 10px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.add-feed:hover {
+  background-color: #EEEEEE;
+}
+
+.add-feed:focus {
+  outline:none;
+  background-color: #DDDDDD;
+}
+
+.refresh-entries {
+  border-radius: 4px;
+  background-color: #85CAD6;
+  border: 3px solid #6EBDCF;
+  color: #FFFFFF;
+  font-size: 18px;
+  padding: 10px;
+  margin-left: 40px;
+}
+
+.refresh-entries:hover {
+  border: 3px solid #6EBDCF;
+  background-color: #53ABC6;
+}
+
+.refresh-entries:active {
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
