@@ -1,13 +1,14 @@
-<h2><%= board.get('title') %></h2>
-  <ul class='lists'></ul>
-  <form>
-    <input type='text' value='Add New List' name='list[title]' />
-    <button class='btn btn-primary add-list'>
-      <span class='glyphicon glyphicon-plus'></span>
-    </button>
-  </form>
-<h3>Members</h3>
-  <% _.each(board.get('members'), function(member){ %>
-    <p><%= member.email %></p>
-  <% }) %>
+<h2 class='board-title'><%= board.get('title') %></h2>
+<div class='container-fluid'>
+  <div class='list-container col-md-10'>
+    <ul class='lists'></ul>
+  </div>
+  <div class='member-container col-md-2'>
+    <h3>Members</h3>
+      <% _.each(board.get('members'), function(member){ %>
+        <p><%= member.email %></p>
+      <% }) %>
+  </div>
+</div>
+
 
