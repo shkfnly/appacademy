@@ -3,6 +3,7 @@ require 'webrick'
 
 
 module Phase4
+
   class Session
     attr_accessor :cookie
     # find the cookie for this app
