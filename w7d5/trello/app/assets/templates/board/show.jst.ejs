@@ -1,0 +1,14 @@
+<h2 class='board-title'><%= board.get('title') %></h2>
+<div class='container-fluid'>
+  <div class='list-container col-md-10'>
+    <ul class='lists'></ul>
+  </div>
+  <div class='member-container col-md-2'>
+    <h3>Members</h3>
+      <% _.each(board.get('members'), function(member){ %>
+        <p><%= member.email %></p>
+      <% }) %>
+  </div>
+</div>
+
+

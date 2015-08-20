@@ -1,0 +1,132 @@
+<script type="text/template" id="pokemon-list-item-template">
+  <li class="poke-list-item" data-id=<%%=pokemon.get('id')%>>
+    <%% _.each(['name', 'poke_type'], function(attr){ %>
+      <%%= attr %> : <%%= pokemon.get(attr) %><br>
+    <%% }) %>
+  </li>
+</script>
+
+<script type="text/template" id="pokemon-detail-template">
+  <div class="detail">
+    <img src="<%%= pokemon.escape('image_url') %>"></img>
+    <%% _.each(pokemon.attributes, function(attr, attrName){ %>
+      <%% if (attrName !== 'id' && attrName !== 'image_url' && attrName !== 'toys'){ %>
+        <span style='font-weight:bold;'><%%= attrName %>:</span>
+        <%%= attr %>
+        <br>
+      <%%}%>
+    <%%}) %>
+    <br>
+    <span style="font-weight: bold;">Toys:</span><br>
+    <ul class="toys"></ul>
+  </div>
+</script>
+
+<script type="text/template" id="toy-list-item-template">
+  <li class="toy-list-item" data-id=<%%= toy.get('id') %> data-pokemon-id=<%%= toy.get('pokemon_id')%> >
+    <%% _.each(['name', 'happiness', 'price'], function(attr){ %>
+      <%%= attr %> : <%%= toy.get(attr) %><br>
+    <%% }) %>
+</script>
+
+<script type="text/template" id="toy-detail-template">
+  <div class="detail">
+    <img src= <%%= toy.get('image_url') %> > <br>
+    <%% _.each(toy.attributes, function(attr, attrName){ %>
+      <%% if (attrName !== 'pokemon_id' && attrName !== 'image_url') { %>
+        <span style="font-weight:bold;"> <%%= attrName %> : </span>
+        <%%= attr %><br>
+      <%%}%>
+    <%%})%>
+
+    <select data-pokemon-id="<%%=toy.get("pokemon_id")%>" data-id="<%% toy.id%>" >
+      <%% _.each(pokes, function (pokemon){ %>
+        <%% var selected = ''; %>
+        <%% if(pokemon.id == toy.get("pokemon_id")){ %>
+          <%% selected = 'selected'; %>
+        <%% } %>
+        <option value=<%%= pokemon.id %> <%%= selected %>><%%= pokemon.get("name") %></option>
+      <%% }) %>
+    </select>
+  </div>
+</script>
+
+<script type="text/template" id="pokemon-form-template">
+    <form class='new-pokemon'>
+      <div>
+        <label
+        for='pokemon_name'>Name:</label>
+        <input
+        type='text'
+        id='pokemon_name'
+        name='pokemon[name]'
+        value="<%%= pokemon.get('name') %>"
+        >
+      </div>
+
+      <div>
+        <label
+        for='pokemon_image_url'>Image URL:</label>
+        <input
+        type='text'
+        id='pokemon_image_url'
+        name='pokemon[image_url]'
+        value="<%%= pokemon.get('image_url') %>">
+      </div>
+
+      <div>
+        <label
+        for='pokemon_poke_type'>Type:</label>
+        <select
+        id='pokemon_poke_type'
+        name='pokemon[poke_type]'>
+        <% Pokemon::TYPES.each do |type|%>
+        <option><%= type %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div>
+      <label
+      for='pokemon_attack'>Attack:</label>
+      <input
+      type='number'
+      id='pokemon_attack'
+      name='pokemon[attack]'
+      value="<%%= pokemon.get('attack') %>">
+    </div>
+
+    <div>
+      <label
+      for='pokemon_defense'>Defense:</label>
+      <input
+      type='number'
+      id='pokemon_defense'
+      name='pokemon[defense]'
+      value="<%%= pokemon.get('defense') %>">
+    </div>
+
+    <div>
+      <label
+      for='pokemon_move_1'>Move #1:</label>
+      <input
+      type='text'
+      id='pokemon_move_1'
+      name='pokemon[moves][]'
+      value=''>
+    </div>
+
+    <div>
+      <label
+      for='pokemon_move_2'>Move #2:</label>
+      <input
+      type='text'
+      id='pokemon_move_2'
+      name='pokemon[moves][]',
+      value=''>
+    </div>
+
+    <button>Create Pokemon</button>
+    <br>
+  </form>
+</script>
