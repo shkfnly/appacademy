@@ -23,18 +23,18 @@ This is the classic hangman game, where one player thinks of a word and the othe
 ![hangman](w1d3/screenshots/hangman_screenshot.png)
 
 
-### Word Chains ( [code](https://github.com/shkfnly/algorithms/blob/master/word_ladder.rb) )
+### Word Chains ( [code](https://github.com/shkfnly/appacademy/blob/master/w1d4/word_chains.rb) )
 Given two words of equal length as command-line arguments, the program builds a chain of words connecting the first to the second. Each word in the chain is in the dictionary and every step along the chain changes exactly one letter from the previous word.
 
 
 ## Week 2
 
-### Minesweeper ( [code](https://github.com/shkfnly/appacademy/tree/master/w2/w2d1) )
+### Minesweeper ( [code](https://github.com/shkfnly/appacademy/blob/master/w2d1/minesweeper/minesweeper.rb) )
 
-### Chess  ( [code](https://github.com/shkfnly/chess) )
-There is a human and an ai player. I also implemented en passant.
+### Chess  ( [code](https://github.com/shkfnly/appacademy/tree/master/w2d2/rubychess) )
+There is a human and an ai player.
 
-![chess](https://github.com/shkfnly/appacademy/blob/master/images/chess.png)
+![chess](w2d2/rubychess/screenshots/chess.png)
 
 
 ### Checkers ( [code](https://github.com/shkfnly/checkers) )
