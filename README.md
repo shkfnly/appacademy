@@ -114,4 +114,4 @@ Javascript projects
 ![Dashboard](https://raw.githubusercontent.com/shkfnly/tentacle/master/screenshots/logged_in_screen.png)
 
 In short: Github Integration with Task management
-This app was created to establish the ability to track project tasks with github. It allows for the checking of tasks against the git commit history. If the commit message matches the task then the task is removed.
+This app was created to establish the ability to track project tasks with github. It allows for the checking of tasks against the git commit history. If the commit message matches the task then the task is removed. This app was implemented using Backbone and Rails. Additional functionality was implmented using Redis and Pusher.
