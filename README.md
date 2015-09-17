@@ -17,10 +17,10 @@ by [Michael Hartl](http://www.michaelhartl.com/).
 ### Tic Tac Toe  ( [code](https://github.com/shkfnly/appacademy/tree/master/w1d5/TicTacToeAI-master/skeleton) )
 This is my version of the timeless classic 2-player pencil & paper game.
 
-### Hangman ( [code](https://github.com/shkfnly/appacademy/blob/master/w1/w1d3/hangman.rb) )
-This is the classic hangman game, where one player thinks of a word and the other tries to guess it by suggesting letters. The program has two types of players: human player and AI player. Since human's are boring, here are two AIs battling it out:
+### Hangman ( [code](https://github.com/shkfnly/appacademy/blob/master/w1d3/hangmanrefactor.rb) )
+This is the classic hangman game, where one player thinks of a word and the other tries to guess it by suggesting letters. The program has two types of players: human player and AI player. 
 
-![hangman](https://github.com/shkfnly/appacademy/blob/master/images/hangman.png)
+![hangman](https://github.com/shkfnly/appacademy/tree/master/w1d3/screenshots/hangman_screenshot.png)
 
 
 ### Word Chains ( [code](https://github.com/shkfnly/algorithms/blob/master/word_ladder.rb) )
