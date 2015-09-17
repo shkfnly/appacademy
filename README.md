@@ -31,10 +31,12 @@ Given two words of equal length as command-line arguments, the program builds a 
 
 ### Minesweeper ( [code](https://github.com/shkfnly/appacademy/blob/master/w2d1/minesweeper/minesweeper.rb) )
 
+![minesweeper](w2d2/rubychess/screenshots/chess.png)
+
 ### Chess  ( [code](https://github.com/shkfnly/appacademy/tree/master/w2d2/rubychess) )
 There is a human and an ai player.
 
-![chess](w2d2/rubychess/screenshots/chess.png)
+![minesweeper](w2d2/rubychess/screenshots/chess.png)
 
 
 ### Checkers ( [code](https://github.com/shkfnly/checkers) )
