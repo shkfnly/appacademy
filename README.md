@@ -36,7 +36,7 @@ Given two words of equal length as command-line arguments, the program builds a 
 ### Chess  ( [code](https://github.com/shkfnly/appacademy/tree/master/w2d2/rubychess) )
 There is a human and an ai player.
 
-![minesweeper](w2d2/rubychess/screenshots/chess.png)
+![chess](w2d2/rubychess/screenshots/chess_actual.png)
 
 
 ### Checkers ( [code](https://github.com/shkfnly/checkers) )
