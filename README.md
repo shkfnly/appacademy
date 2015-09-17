@@ -39,45 +39,18 @@ There is a human and an ai player.
 ![chess](w2d2/rubychess/screenshots/chess_actual.png)
 
 
-### Checkers ( [code](https://github.com/shkfnly/checkers) )
-
-![checkers](https://github.com/shkfnly/appacademy/blob/master/images/checkers.png)
-
+### Checkers ( [code](https://github.com/shkfnly/appacademy/tree/master/w2d4/checkers/solution) )
 
 ## Week 3
 
-### SQLZoo ( [code](https://github.com/shkfnly/appacademy/tree/master/w3/w3d1/sqlzoo-master) )
+### SQLZoo ( [code](https://github.com/shkfnly/appacademy/tree/master/w3d1/sqlpractice/skeleton/lib) )
 
-### URL Shortner App ( [code](https://github.com/shkfnly/appacademy/tree/master/w3/w3d3/url_shortner_app) )
+### URL Shortner App ( [code](https://github.com/shkfnly/appacademy/tree/master/w3d3/UrlShortener) )
 URL Shortner a tool that takes an input URL and will shorten it for the user. Subsequent users can then give the shortened URL back to the application and be directed to the original URL. You can input shortened URLs into CLI and the original URL pops open in a browser (with the help of the `launchy` gem).
 
-### Polls App ( [code](https://github.com/shkfnly/appacademy/tree/master/w3/w3d4/PollsApp) )
+### Polls App ( [code](https://github.com/shkfnly/appacademy/tree/master/w3d4/PollsThing) )
 - Tables: `users`, `polls`, `questions`, `answer_choices`, and `responses`
 - associations and validations for all models
-
-
-### ActiveRecord Lite ( [code](https://github.com/shkfnly/appacademy/tree/master/w3/w3d5) )
-I built my own lite version of ActiveRecord.
-- implemented `my_attr_accessor` using
-  - `define_method`
-  - `instance_variable_get`
-  - `instance_variable_set`
-- used `SQLObject` to interact with the database to implement
-  - `::all`
-  - `::find`
-  - `#insert`
-  - `#update`
-  - `#save`
-  - `::table_name` and `::table_name=`
-  - `::finalize!` which automatically adds getter and setter methods for each column
-  - `#initialize`
-  - `::parse_all`
-- implemented associations
-  - `belongs_to` and `has_many` associations, which store
-    - `#foreign_key`
-    - `#class_name`
-    - `#primary_key`
-  - `has_one_through`
 
 
 ## Week 4
@@ -90,31 +63,28 @@ JumpStart blogger tutorial, which can be found at [JumpStart Lab](http://tutoria
 Contacts API is an application storing your email contacts.  Users can send requests to the API in order to create and share contacts, as well as retrieve their stored contact information.
 - Tables: `users`, `contacts`, `contact_share`, `contact_group`, and `comments`
 
-### 99 Cats ( [code](https://github.com/shkfnly/appacademy/tree/master/w4/w4d2d3/ninetyninecats) )
+### 99 Cats ( [code](https://github.com/shkfnly/appacademy/tree/master/w4d3/ninetyninecats) )
 This project is a clone of the dress rental website 99dresses. In other words: it is an airbnb for renting cats.
 
-### Music App ( [code](https://github.com/shkfnly/MusicApp) | [demo](http://musicapp.shkfnly.com/) )
-**email:** user@example.com
-**password:** awesome
+### Music App ( [code](https://github.com/shkfnly/appacademy/tree/master/w4d4/musicapp)
 
 A simplified version of a rdio-like app for browsing music. It is an inventory system for record labels. This app lets users track their Bands, Albums and Tracks.
 
-### Reddit App ( [code](https://github.com/shkfnly/RedditApp) | [demo](http://redditapp.shkfnly.com/) )
+### Reddit App ( [code](https://github.com/shkfnly/appacademy/tree/master/w4d5/reddit)
 
-If you don't know what the Reddit is, then you are probably someone with a life. [Here are some cats.](http://www.reddit.com/r/cats)
+If you don't know what the Reddit is, then you are probably someone with a life.
 
 
 ## Week 5
 
-### Goal Setter App ( [code](https://github.com/shkfnly/GoalSetterApp) | [demo](http://goalsetterv.herokuapp.com/) )
+### Goal Setter App ( [code](https://github.com/shkfnly/appacademy/tree/master/w5d1/GoalApp))
 
 This project's main focus was on improving my skills in:
 - writing integration tests using `Capybara` and `RSpec`
-- testing behavior rather than implementation
 - learning how to develop one feature at a time
 - using concerns and polymorphic associations to dry up code
 
-### Rails Lite ( [code](https://github.com/shkfnly/RedditApp) )
+### Rails Lite ( [code](https://github.com/shkfnly/appacademy/tree/master/w5d2/skeleton) )
 
 I built my own lite version of Rails.
 - used `WEBrick` to set my own server
@@ -122,30 +92,23 @@ I built my own lite version of Rails.
 - route request to the appropriate controller
 - send response back to the client
 
-### Rails Lite integrated with Active Record Lite ( [code](https://github.com/shkfnly/rails_with_active_record_lite) )
 
 ## Week 6
 Javascript projects
 
-### Towers of Hanoi ( [code](https://github.com/shkfnly/towers_of_hanoi) )
-### Snake ( [code](https://github.com/shkfnly/snake) )
-### Asteroids ( [code](https://github.com/shkfnly/asteroids) )
-### AjaxTwitter ( [code](https://github.com/shkfnly/AjaxTwitter) )
-The main purpose of this project was to write jQuery plugins. The code includes
-- `FollowToggle`: a jQuery plugin that turns a button into a toggle that follows/unfollows a user.
-- `UsersSearch`: a jQuery plugin that creates real-time user search. On every keypress, as the user types in a username, the page shows the matching users for the current input.
-- `TweetCompose`: a jQuery plugin that graphs the new tweet form and installs itself. It also allows us to tag multiple users in a tweet.
+### Towers of Hanoi ( [code](https://github.com/shkfnly/appacademy/tree/master/w5d5/hanoi) )
+### Tic Tac Toe ([code](https://github.com/shkfnly/appacademy/tree/master/w5d5/ttt))
 
 ## Week 7
 
-### Pokedex ( [code](https://github.com/shkfnly/appacademy/tree/master/w7/w7d2) )
+### Pokedex ( [code](https://github.com/shkfnly/appacademy/tree/master/w7d2/pokedex2) )
 
-### TrelloClone ( [code](https://github.com/shkfnly/TrelloClone) )
+### TrelloClone ( [code](https://github.com/shkfnly/appacademy/tree/master/w7d5/trello) )
 
 
-## Final Project ( [code](https://github.com/shkfnly/WaiterUp) | [live](waiterup.com) )
+## Final Project ( [code](https://github.com/shkfnly/tentacle) | [live](https://tentacleio.herokuapp.com/) )
 
-[waiterup.com](waiterup.com)
+[Tentacle](https://tentacleio.herokuapp.com/)
 
-In short: Yelp for menus.
-There are 2 type of users: restaurant managers and customers. Restaurant managers upload their menu to WaiterUp. If a customer walks into that restaurant, he/she can pull up the app on their phone, order from the menu, and then also pay through the app without having to leave tip. The idea is to eliminate waiters.
+In short: Github Integration with Task management
+This app was created to establish the ability to track project tasks with github. It allows for the checking of tasks against the git commit history. If the commit message matches the task then the task is removed.
