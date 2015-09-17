@@ -110,5 +110,8 @@ Javascript projects
 
 [Tentacle](https://tentacleio.herokuapp.com/)
 
+![Landing Page](screenshots/landing_screen.png)
+![Dashboard](screenshots/logged_in_screen.png)
+
 In short: Github Integration with Task management
 This app was created to establish the ability to track project tasks with github. It allows for the checking of tasks against the git commit history. If the commit message matches the task then the task is removed.
