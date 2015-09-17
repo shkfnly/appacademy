@@ -2,7 +2,7 @@
 
 ## Prep Work for App Academy
 
-### Twitter Clone ( [code](https://github.com/shkfnly/sample_app) | [demo](fvbkireh.herokuapp.com) )
+### Twitter Clone ( [code](https://github.com/shkfnly/sample_app))
 This is the sample application for the
 [*Ruby on Rails Tutorial:
 Learn Web Development with Rails*](http://www.railstutorial.org/)
